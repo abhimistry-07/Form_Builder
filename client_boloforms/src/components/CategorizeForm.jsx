@@ -41,7 +41,7 @@ const CategorizeForm = () => {
     console.log(formData);
 
     try {
-      axios.post("http://localhost:8080/categorize/create", formData, {
+      axios.post("http://localhost:8080/categorize", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

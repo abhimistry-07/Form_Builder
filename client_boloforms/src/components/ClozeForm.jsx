@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import axios from "axios";
 
 const ClozeForm = () => {
   const [sentence, setSentence] = useState("");
@@ -93,32 +94,21 @@ const ClozeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      previeqQuestion: previewSection,
-      question,
-      underlinedWords,
-    };
-
-    console.log(formData);
-
-    // const formData = new FormData();
-    // formData.append("previewQuestion", previewSection);
-    // formData.append("question", question);
-    // underlinedWords.forEach((word, index) => {
-    //   formData.append(`underlinedWords[${index}]`, word);
-    // });
-    // formData.append("categories", categories);
-    // formData.append("items", items);
-    // formData.append("items", JSON.stringify(items));
-
-    console.log(formData);
-
     try {
-      //   axios.post("http://localhost:8080/categorize/create", formData, {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   });
+      const formData = {
+        previewQuestion: previewSection,
+        question,
+        underlinedWords,
+      };
+
+      axios.post("http://localhost:8080/cloze", formData);
+
+      sentenceRef.current.innerText = "";
+
+      setSentence("");
+      setUnderlinedWords([]);
+      setPreviewSection("");
+      setQuestion("");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
