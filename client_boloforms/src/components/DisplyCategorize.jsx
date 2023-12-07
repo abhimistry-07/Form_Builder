@@ -2,13 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+const baseUrl = process.env.REACT_APP_BASEURL;
+
 const DisplayCategorize = () => {
   const [data, setData] = useState([]);
   const [categoryItems, setCategoryItems] = useState({});
 
   const fetchData = async () => {
     try {
-      const apiUrl = "http://localhost:8080/categorize";
+      const apiUrl = `${baseUrl}/categorize`;
       const response = await axios.get(apiUrl);
       setData(response.data);
     } catch (error) {

@@ -3,6 +3,8 @@ import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
 
+const baseUrl = process.env.REACT_APP_BASEURL;
+
 const CategorizeForm = () => {
   const [question, setQuestion] = useState("");
   const [headerImage, setHeaderImage] = useState(null);
@@ -41,7 +43,7 @@ const CategorizeForm = () => {
     console.log(formData);
 
     try {
-      axios.post("http://localhost:8080/categorize", formData, {
+      axios.post(`${baseUrl}/categorize`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -122,11 +124,11 @@ const CategorizeForm = () => {
 
   return (
     <>
-      <Link to="/categorize">
+      {/* <Link to="/categorize">
         <h1 className="text-2xl font-bold">
           Click here to see Categorize Questions page
         </h1>
-      </Link>
+      </Link> */}
 
       <form className="max-w-4xl mx-auto mt-8 p-6 bg-gray-100 shadow-md">
         {/* Question */}

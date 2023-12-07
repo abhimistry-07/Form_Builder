@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+const baseUrl = process.env.REACT_APP_BASEURL;
 
 const ClozeForm = () => {
   const [sentence, setSentence] = useState("");
@@ -101,7 +104,7 @@ const ClozeForm = () => {
         underlinedWords,
       };
 
-      axios.post("http://localhost:8080/cloze", formData);
+      axios.post(`${baseUrl}/cloze`, formData);
 
       sentenceRef.current.innerText = "";
 
@@ -120,6 +123,11 @@ const ClozeForm = () => {
 
   return (
     <form>
+      {/* <Link to="/cloze">
+        <h1 className="text-2xl font-bold">
+          Click here to see Categorize Questions page
+        </h1>
+      </Link> */}
       {/* Preview Section */}
       <div className="mb-4">
         <label className="block text-sm font-bold text-gray-700">

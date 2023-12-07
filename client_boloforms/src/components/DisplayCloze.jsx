@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+const baseUrl = process.env.REACT_APP_BASEURL;
+
 const DisplayCloze = () => {
   const [clozeData, setClozeData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/cloze");
+        const response = await axios.get(`${baseUrl}/cloze`);
         setClozeData(response.data);
       } catch (error) {
         console.error("Error fetching cloze data:", error);
