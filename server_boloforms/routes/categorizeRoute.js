@@ -19,7 +19,7 @@ categorizeRouter.get('/', async (req, res) => {
 });
 
 // POST
-categorizeRouter.post('/create', upload.single('headerImage'), async (req, res) => {
+categorizeRouter.post('/', upload.single('headerImage'), async (req, res) => {
 
   const formData = req.body;
   formData.items = JSON.parse(formData.items);

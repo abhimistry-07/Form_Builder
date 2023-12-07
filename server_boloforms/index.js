@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const connection = require('./db');
 const categorizeRouter = require('./routes/categorizeRoute');
+const clozeRouter = require('./routes/clozeRoute');
 require('dotenv').config();
 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/categorize", categorizeRouter);
+app.use("/cloze", clozeRouter);
 
 app.listen(process.env.port, async () => {
     try {
