@@ -6,7 +6,7 @@ const clozeRouter = express.Router();
 clozeRouter.get('/', async (req, res) => {
     try {
         const formData = await ClozeModel.find();
-        res.status(200).send({ msg: "Successfully fetched", formData })
+        res.status(200).send(formData)
     } catch (error) {
         console.error('Error fetching formData:', error);
         res.status(500).json({ error: 'Internal Server Error' });
