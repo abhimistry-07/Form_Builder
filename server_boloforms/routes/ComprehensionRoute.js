@@ -19,15 +19,18 @@ comprehensionRouter.get("/", async (req, res) => {
 
 // POST
 comprehensionRouter.post("/", upload.single("selectedImage"), async (req, res) => {
-    console.log(req.file, ">>>>>>>>>>>>>>>>>");
     try {
         const { passage, questions } = req.body;
-        const selectedImage = req.file.buffer.toString("base64");
+
+        let selectedImage = "";
+        if (req.file) {
+            selectedImage = req.file.buffer.toString("base64");
+        }
 
         const comprehensionForm = new ComprehensionModel({
-            passage: req.body.passage,
-            selectedImage: req.file.buffer,
-            questions: JSON.parse(req.body.questions),
+            passage,
+            selectedImage,
+            questions: JSON.parse(questions),
         });
 
         const savedComprehensionForm = await comprehensionForm.save();

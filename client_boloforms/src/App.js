@@ -5,6 +5,7 @@ import DisplyCategorize from './components/DisplyCategorize';
 import ClozeForm from './components/ClozeForm';
 import DisplayCloze from './components/DisplayCloze';
 import ComprehensionForm from './components/ComprehensionForm';
+import DisplayComprehension from './components/DisplayComprehension';
 
 const NavBar = () => {
   return <>
@@ -30,14 +31,15 @@ const NavBar = () => {
 function App() {
   return (
     <div className="App">
-      {/* <NavBar />
+      <NavBar />
       <Routes>
         <Route path='/' element={<CategorizeForm />} />
         <Route path='/categorize' element={<DisplyCategorize />} />
         <Route path='/cloze' element={<DisplayCloze />} />
         <Route path='/clozeform' element={<ClozeForm />} />
-      </Routes> */}
+      </Routes>
       <ComprehensionForm />
+      <DisplayComprehension />
     </div>
   );
 }

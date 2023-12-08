@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import QuestionForm from "./QuestionForm";
 import axios from "axios";
 
+const baseUrl = process.env.REACT_APP_BASEURL;
+
 const ComprehensionForm = () => {
   const [passage, setPassage] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
@@ -29,9 +31,12 @@ const ComprehensionForm = () => {
       }
       formData.append("questions", JSON.stringify(questions));
 
-      // const response = await axios.post("", formData);
+      const response = await axios.post(
+        `http://localhost:8080/comprehension`,
+        formData
+      );
 
-      console.log("Response:", formData);
+      console.log("Response:", response.data);
 
       setPassage("");
       setSelectedImage("");
