@@ -18,6 +18,8 @@ const DisplayCategorize = () => {
     }
   };
 
+  console.log(data);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -66,6 +68,10 @@ const DisplayCategorize = () => {
             <h3 className="text-lg font-bold mb-2">
               Question: {questionData.question}
             </h3>
+            {questionData.headerImage ? (
+              <img src={questionData.headerImage} alt="Error"></img>
+            ) : null}
+            {/* <img src="" alt="" /> */}
 
             <Droppable droppableId="items" direction="horizontal">
               {(provided) => (
