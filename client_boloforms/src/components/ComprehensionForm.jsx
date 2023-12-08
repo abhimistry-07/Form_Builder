@@ -31,10 +31,7 @@ const ComprehensionForm = () => {
       }
       formData.append("questions", JSON.stringify(questions));
 
-      const response = await axios.post(
-        `http://localhost:8080/comprehension`,
-        formData
-      );
+      const response = await axios.post(`${baseUrl}/comprehension`, formData);
 
       console.log("Response:", response.data);
 
